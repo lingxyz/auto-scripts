@@ -1,12 +1,11 @@
 const fs = require('fs')
 var commitInfo = JSON.parse(fs.readFileSync('./date_config.json', 'utf8'))
 
-const data = {
+fs.writeFileSync('./date_config.json', `{
 	"message": "",
 	"commitTime": 1,
-	"backDay": 1494
-}
-
+	"backDay": ${commitInfo.backDay - 1 - parseInt(Math.random() * 3)}
+}`);
 
 const exec = require('child_process').exec
 
